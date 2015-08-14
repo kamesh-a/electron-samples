@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		<h3> Renderer Behaviour in WINDOWS with and without webview being embedded </h3>
+		<p> ( Note: MAC-OS exhibits same behaviour regardless on webview present or not ) </p>
+		<p><b>"Crash Without Webview Embedded"</b> : Renderer turns white but background and application stays
+			running we are able to detect and capture "crashed" event on BrowserWindowObject, hopefully atleast
+			we can reload the application </p>
+
+		<p><b>"Crash WITH Webview Embedded"</b> : Entire application is closed </p>
+
+		<p> <b>Proposed Ideas : </b>
+			<br>- Webview crash should not crash the BrowserWindow Render
+			<br><br>- Any way to stop the webview crash event to cancel bubbling up, as all webview events go till 
+			the embedder if we assume correctly, this might also be reason render crashing along with it. If in case
+			webview crashes with any of the documented events like <b>"crashed","gpu-crashed","plugin-crashed"</b>.
+			<br><br>- Function to simulate <b>webview.crash</b> instead or process.crash in this example
+		</p>
+
+		<input id="withoutWebview" type="button" value="CrashWithoutWebviewEmbedded"/>
+		<input id="withWebview" type="button" value="CrashWithWebviewEmbedded"/>
+
+	<div id = "console"></div>	
+	<div id = "webviewHolder"></div>
+
+	<script type = "text/javascript" src = "app.js"></script>
+</body>
+</html>

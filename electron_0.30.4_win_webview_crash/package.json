@@ -1,0 +1,6 @@
+{
+	"chromium-args":"--remote-debugging-port=8888",
+	"name":"WebviewCrashHandler",
+	"main":"Main.js",
+	"version":"0.0.1"
+}
