@@ -14,4 +14,5 @@ app.on('ready', function() {
     mainWindow.loadUrl('file://' + __dirname + '/mocha.html');
     // mainWindow.toggleDevTools();
     mainWindow.show();
+    mainWindow.maximize();
 });
