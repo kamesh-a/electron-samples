@@ -1,0 +1,5 @@
+{	
+	"main":"background.js",
+	"name":"MochaTestApp",
+	"version":"0.1.0"
+}
