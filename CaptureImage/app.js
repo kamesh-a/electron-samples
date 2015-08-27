@@ -49,25 +49,16 @@ onload = function() {
 
     document.querySelector('#background').onclick = function() {
         /*
-			Application is visible
-			image capture will be
-			empty.
-
-			simulate the background
+			Make the window to go in background
 		 */
         log('========= Simulation App In Background ===========');
-
         shell.openExternal('https://github.com/atom/electron');
         setTimeout(captureImage, 2000);
     }
 
     document.querySelector('#hidden').onclick = function() {
         /*
-			Application is visible
-			image capture will be
-			empty.
-
-			simulate the background
+			Hide the window and start picture capturing.
 		 */
         log('========= Simulation App is Hidden ===========');
         currentWindow.hide();
