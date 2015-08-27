@@ -5,7 +5,12 @@ var mainWindow = null;
 app.commandLine.appendSwitch('remote-debugging-port', '9222'); // enabling remote debugging port
 
 app.on('ready', function() {
-    mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        show: true,
+        focus:true
+    });
     mainWindow.loadUrl('file://' + __dirname + '/app.html');
     // mainWindow.toggleDevTools();
 });

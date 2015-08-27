@@ -17,9 +17,9 @@ function log( txt , isError ){
 function captureImage(){
 	currentWindow.capturePage(function( nativeImage ){
 		if( nativeImage.isEmpty() ){
-			log('==== Failure ====');
+			log('Failure :');
 			log('Is NativeImage Empty : '+nativeImage.isEmpty() , true );
-			log('DataURI : '+nativeImage.toDataUrl() , true ); 
+			log('DataURI not well formed : '+nativeImage.toDataUrl() , true ); 
 			imagePreview('');
 
 			/* Resuming Back to current Window */
@@ -27,13 +27,18 @@ function captureImage(){
 			currentWindow.focus();
 			return;
 		}
-		log('==== success ====');
-		log('Image Capture success : '+nativeImage.isEmpty());
+		log('Success :');
+		log('	- Image Capture success : '+!nativeImage.isEmpty());
+		log('	- Embedding data url to img tag');
 		imagePreview(nativeImage.toDataUrl());
 	});
 }
 
 onload = function(){
+	log('Note : ');
+	log('a. Event loop is somehow slown down, tick/Interval won\'t kick in properly < 0.30.6');
+	log('b. In windows ELECTRON is able to capture image in all three states background, visible, hidden');
+
 	document.querySelector('#visible').onclick = function(){
 		/*
 			Application is visible
@@ -50,10 +55,22 @@ onload = function(){
 
 			simulate the background
 		 */
-		log('========= Simulation ===========');
-		log('Application need go in background for simulation purpose , takes 3 sec');
-		log('Note :  Event loop is somehow slown down, timeout won\'t kick in properly',true);
+		log('========= Simulation App In Background ===========');
+		
 		shell.openExternal('https://github.com/atom/electron');
+		setTimeout(captureImage,2000);
+	}
+
+	document.querySelector('#hidden').onclick = function(){
+		/*
+			Application is visible
+			image capture will be
+			empty.
+
+			simulate the background
+		 */
+		log('========= Simulation App is Hidden ===========');
+		currentWindow.hide();
 		setTimeout(captureImage,2000);
 	}
 }
