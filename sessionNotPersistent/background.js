@@ -11,8 +11,7 @@ app.on('ready', function() {
         show: true,
         focus:true
     });
-    mainWindow.loadUrl('file://' + __dirname + '/mocha.html');
+    mainWindow.loadUrl('file://' + __dirname + '/sessionTest.html');
     // mainWindow.toggleDevTools();
     mainWindow.show();
-    mainWindow.maximize();
 });
