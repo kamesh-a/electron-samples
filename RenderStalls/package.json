@@ -1,0 +1,5 @@
+{	
+	"main":"background.js",
+	"name":"RenderStalling",
+	"version":"0.1.0"
+}
