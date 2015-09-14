@@ -31,16 +31,16 @@ app.on('ready', function() {
          * so. just a small workaround to getinformation
          * to print.
          */
-        mainWindow.webContents.on('did-finish-load', function() {
-            mainWindow.send('ElectronIPCMessage', {
-                eType: 'Crashed',
-                source: 'main'
-            });
+        // mainWindow.webContents.on('did-finish-load', function() {
+        //     mainWindow.send('ElectronIPCMessage', {
+        //         eType: 'Crashed',
+        //         source: 'main'
+        //     });
 
-            mainWindow.send('ElectronIPCMessage', {
-                eType: 'Reloaded',
-                source: 'main'
-            });
-        });
+        //     mainWindow.send('ElectronIPCMessage', {
+        //         eType: 'Reloaded',
+        //         source: 'main'
+        //     });
+        // });
     });
 });

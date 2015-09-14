@@ -9,7 +9,11 @@ app.on('ready', function() {
         width: 800,
         height: 600,
         show: true,
-        focus:true
+        "min-height": 600,
+        "min-width": 800,
+        "fullscreen": false,
+        "kiosk": false,
+        focus: true
     });
     mainWindow.loadUrl('file://' + __dirname + '/renderStall.html');
     // mainWindow.toggleDevTools();
