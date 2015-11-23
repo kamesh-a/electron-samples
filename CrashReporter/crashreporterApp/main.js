@@ -4,6 +4,10 @@ var http = require('http');
 var crashReporter = require('crash-reporter');
 crashReporter.start({submitUrl: 'http://127.0.0.1:3000/crashreporter'});
 
+
+app.commandLine.appendSwitch('remote-debugging-port', '9222'); // enabling remote debugging port
+app.commandLine.appendSwitch('ignore-certificate-errors', 'true'); // Ignoring certifcate errors to load websites.
+                                                                   // 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
