@@ -9,7 +9,7 @@ var download = {
          * Default Application's Downloads Path
          * replaced with system Downloads
          */
-        session.on('will-download', function(event, item, webContents) {
+        session.once('will-download', function(event, item, webContents) {
             /*
              * This will not fire in electron engine v0.35.0 /mac
              *
