@@ -1,0 +1,5 @@
+{
+	"name":"WebviewCrashOnIPCMessage",
+	"main":"Main.js",
+	"version":"0.0.1"
+}
