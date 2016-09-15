@@ -11,7 +11,7 @@
         clearImmediate: clearImmediate,
         ipc: {
             isValid: function(dataObj) {
-                return dataObj && typeof dataObj == 'object' ? true : false;
+                return dataObj && typeof dataObj == 'object';
             },
             receive: function(message) {
                 /**
