@@ -3,18 +3,30 @@ var bodyParser = require("body-parser");
 var app = express();
 var formidable = require('formidable');
 var fs = require('fs');
+var path = require('path');
 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+function getDownloadFolder() {
+    var downloadFolderName = "Downloads";
+    if ("HOME" in process.env) {
+        return path.join(process.env.HOME, downloadFolderName);
+    } else if ("HOMEPATH" in process.env) {
+        return path.join(process.env.HOMEDRIVE, process.env.HOMEPATH, downloadFolderName);
+    } else if ("USERPROFILE" in process.env) {
+        return path.join(process.env.USERPROFILE, downloadFolderName);
+    }
+};
+
 app.post('/crashreporter', function(req, res) {
     console.log(" crashreporter =============== START");
     // console.log(" Headers : ", req);
     var form = new formidable.IncomingForm();
-    form.uploadDir = "/Volumes/HD_II/Office/Electron-samples/electron-samples/CrashReporter/server_stub_3000/uploads/";
+    form.uploadDir = getDownloadFolder();
     form.keepExtensions = true;
-    
+
     form.parse(req, function(err, fields, files) {
         console.log('****** Parsing formdata *****');
         console.log({
@@ -23,11 +35,8 @@ app.post('/crashreporter', function(req, res) {
         });
 
         console.log(" crashreporter =============== END");
+        res.end(files.upload_file_minidump.name || "DefaultResponse");
     });
-
-
-
-    res.end("DefaultResponse");
 });
 
 
